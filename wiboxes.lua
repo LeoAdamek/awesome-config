@@ -21,7 +21,7 @@ markup = lain.util.markup
 
 -- Spacer Widget
 -- Something to go between widgets
-spacer = wibox.widget.textbox(" · ")
+spacer = wibox.widget.textbox("╱")
 
 
 -- Battery Widget
@@ -86,70 +86,72 @@ memory_widget = lain.widgets.mem(
    {
       settings = function()
          widget:set_markup(
-            markup("#E0DA37" , mem_now.used .. "M")
-         )
-      end
-   }
-)
+             markup("#E0DA37" , mem_now.used .. "M")
+          )
+       end
+    }
+ )
 
--- Widgets to go on the right (left-to-right)
--- To be interleaved with the spacer
-right_widgets = {
-   net_tx_widget,
-   net_rx_widget,
-   memory_widget,
-   cpu_widget,
-   battery_widget,
-   clock_widget
-}
-
-
+ -- Widgets to go on the right (left-to-right)
+ -- To be interleaved with the spacer
+ right_widgets = {
+    net_tx_widget,
+    net_rx_widget,
+    memory_widget,
+    cpu_widget,
+    battery_widget,
+    clock_widget
+ }
 
 
--- Create a wibox for each screen and add it
-mywibox = {}
-mypromptbox = {}
-mylayoutbox = {}
-mytaglist = {}
-mytaglist.buttons = awful.util.table.join(
-                    awful.button({ }, 1, awful.tag.viewonly),
-                    awful.button({ modkey }, 1, awful.client.movetotag),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
-                    )
 
-for s = 1, screen.count() do
-    -- Create a promptbox for each screen
-    mypromptbox[s] = awful.widget.prompt()
-    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    mylayoutbox[s] = awful.widget.layoutbox(s)
-    mylayoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
-    -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
-    -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+ -- Create a wibox for each screen and add it
+ mywibox = {}
+ mypromptbox = {}
+ mylayoutbox = {}
+ mytaglist = {}
+ mytaglist.buttons = awful.util.table.join(
+                     awful.button({ }, 1, awful.tag.viewonly),
+                     awful.button({ modkey }, 1, awful.client.movetotag),
+                     awful.button({ }, 3, awful.tag.viewtoggle),
+                     awful.button({ modkey }, 3, awful.client.toggletag),
+                     awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
+                     awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+                     )
 
-    -- Widgets that are aligned to the left
-    local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylayoutbox[s])
-    left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
+ for s = 1, screen.count() do
+     -- Create a promptbox for each screen
+     mypromptbox[s] = awful.widget.prompt()
+     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
+     -- We need one layoutbox per screen.
+     mylayoutbox[s] = awful.widget.layoutbox(s)
+     mylayoutbox[s]:buttons(awful.util.table.join(
+                            awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
+                            awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
+                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
+                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+     -- Create a taglist widget
+     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
-    -- Widgets that are aligned to the right
-    local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    
-    for k,w in ipairs(right_widgets) do
-       right_layout:add(w)
-       right_layout:add(spacer)
+     -- Create the wibox
+     mywibox[s] = awful.wibox({ position = "top", screen = s })
+
+     -- Widgets that are aligned to the left
+     local left_layout = wibox.layout.fixed.horizontal()
+     left_layout:add(mylayoutbox[s])
+     left_layout:add(mytaglist[s])
+     left_layout:add(mypromptbox[s])
+
+     -- Widgets that are aligned to the right
+     local right_layout = wibox.layout.fixed.horizontal()
+     if s == 1 then right_layout:add(wibox.widget.systray()) end
+
+     for k,w in ipairs(right_widgets) do
+        right_layout:add(w)
+        if right_widgets[k+1] then
+           right_layout:add(spacer)
+        end
     end
 
     -- Now bring it all together (with the tasklist in the middle)
