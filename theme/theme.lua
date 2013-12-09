@@ -5,7 +5,7 @@ theme = {}
 
 theme.icon_dir      = awful.util.getdir("config") .. "/icons"
 
-theme.font          = "Terminus 8"
+theme.font          = "Terminus 12"
 
 theme.bg_normal     = "#000000AA"
 theme.bg_focus      = "#33AEBD"
