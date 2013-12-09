@@ -12,6 +12,8 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
                      buttons = clientbuttons,
+
+                     -- Disabling this makes windows stay full-screen
 		     size_hints_honor = false
     } },
     { rule = { class = "MPlayer" },
