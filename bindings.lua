@@ -1,6 +1,7 @@
 local awful = require("awful")
 
 local options = require("options")
+local lain = require("lain")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -13,6 +14,10 @@ modkey = "Mod4"
 -- Global Keys
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+
+   awful.key({modkey , "Shift" } , "i" , function() lain.util.useless_gaps_resize(1) end),
+   awful.key({modkey , "Shift" } , "o" , function() lain.util.useless_gaps_resize(-1) end),
+
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
