@@ -2,6 +2,9 @@ local beautiful = require("beautiful")
 local awful = require("awful")
 local gears = require("gears")
 
+
+options = {}
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/home/leo/.config/awesome/theme/theme.lua")
@@ -13,7 +16,7 @@ editor_cmd = terminal .. " -e " .. editor
 
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-local layouts = {
+layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -21,6 +24,8 @@ local layouts = {
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.floating
 }
+
+options.layouts = layouts
 -- }}}
 
 -- {{{ Wallpaper
@@ -39,3 +44,5 @@ for s = 1, screen.count() do
     tags[s] = awful.tag( {"☰" , "☱", "☲" , "☳" , "☴"}, s , layouts[1])
 end
 -- }}}
+
+return options

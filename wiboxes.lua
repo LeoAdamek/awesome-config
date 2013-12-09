@@ -1,11 +1,13 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local vicious = require("vicious")
+local lain = require("lain")
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock("DATE %Y/%m/%d @ %H:%M:%S", 1)
+clock_widget = awful.widget.textclock("DATE %Y/%m/%d @ %H:%M:%S", 1)
 
+--[[
 -- Memory %
 mymemory = wibox.widget.textbox()
 vicious.register(mymemory , vicious.widgets.mem , "RAM $1% ($2MB/$3MB) :: " , 1)
@@ -13,6 +15,96 @@ vicious.register(mymemory , vicious.widgets.mem , "RAM $1% ($2MB/$3MB) :: " , 1)
 -- CPU %
 mycpu = wibox.widget.textbox()
 vicious.register(mycpu , vicious.widgets.cpu,  " $1% (CPU) :: ", 1)
+--]]
+
+markup = lain.util.markup
+
+-- Spacer Widget
+-- Something to go between widgets
+spacer = wibox.widget.textbox(" · ")
+
+
+-- Battery Widget
+-- Only active if we have a battery
+battery_widget = lain.widgets.bat(
+   {
+      settings = function()
+         if bat_now.perc == "N/A" then
+            bat_now.perc = "AC"
+         else
+            bat_now.prc = bat_now.perc .. "%"
+         end
+
+         widget:set_text(bat_now.perc)
+      end
+   }
+)
+
+-- CPU Widget
+cpu_widget = lain.widgets.cpu(
+   {
+      settings = function()
+         widget:set_markup(
+            markup("#E33A6E" , cpu_now.usage .. "%" )
+         )
+      end
+   }
+)
+
+-- System Temperature
+--[[
+temperature_widget = lain.widgets.temp(
+   {
+      settings = function()
+         widget:set_markup(
+            markup("#F1AF5F" , coretemp_now .. "°C")
+         )
+      end
+   }
+)
+--]]
+
+-- Network Widgets
+-- etwork Tx/Rx
+net_rx_widget = wibox.widget.textbox()
+net_tx_widget = lain.widgets.net(
+   {
+      settings = function()
+         widget:set_markup(
+            markup("#E54C62" , net_now.sent)
+         )
+
+         net_rx_widget:set_markup(
+            markup("#87AF5F" , net_now.received)
+         )
+      end
+   }
+)
+
+-- Memory
+memory_widget = lain.widgets.mem(
+   {
+      settings = function()
+         widget:set_markup(
+            markup("#E0DA37" , mem_now.used .. "M")
+         )
+      end
+   }
+)
+
+-- Widgets to go on the right (left-to-right)
+-- To be interleaved with the spacer
+right_widgets = {
+   net_tx_widget,
+   net_rx_widget,
+   memory_widget,
+   cpu_widget,
+   battery_widget,
+   clock_widget
+}
+
+
+
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -27,40 +119,6 @@ mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
                     awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
                     )
-mytasklist = {}
-mytasklist.buttons = awful.util.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  -- Without this, the following
-                                                  -- :isvisible() makes no sense
-                                                  c.minimized = false
-                                                  if not c:isvisible() then
-                                                      awful.tag.viewonly(c:tags()[1])
-                                                  end
-                                                  -- This will also un-minimize
-                                                  -- the client, if needed
-                                                  client.focus = c
-                                                  c:raise()
-                                              end
-                                          end),
-                     awful.button({ }, 3, function ()
-                                              if instance then
-                                                  instance:hide()
-                                                  instance = nil
-                                              else
-                                                  instance = awful.menu.clients({ width=250 })
-                                              end
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                              if client.focus then client.focus:raise() end
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                              if client.focus then client.focus:raise() end
-                                          end))
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -76,9 +134,6 @@ for s = 1, screen.count() do
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
-    -- Create a tasklist widget
-    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
-
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
 
@@ -91,9 +146,11 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mycpu)
-    right_layout:add(mymemory)
-    right_layout:add(mytextclock)
+    
+    for k,w in ipairs(right_widgets) do
+       right_layout:add(w)
+       right_layout:add(spacer)
+    end
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
