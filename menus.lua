@@ -1,3 +1,7 @@
+local awful = require("awful")
+local beautiful = require("beautiful")
+local menubar = require("menubar")
+
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {

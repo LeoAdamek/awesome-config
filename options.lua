@@ -1,3 +1,7 @@
+local beautiful = require("beautiful")
+local awful = require("awful")
+local gears = require("gears")
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/home/leo/.config/awesome/theme/theme.lua")
@@ -9,8 +13,7 @@ editor_cmd = terminal .. " -e " .. editor
 
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-local layouts =
-{
+local layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,

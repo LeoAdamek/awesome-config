@@ -134,3 +134,5 @@ root.buttons( awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
+
+root.keys(globalkeys)

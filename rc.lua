@@ -1,35 +1,21 @@
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
-
--- Widget and layout library
-local wibox = require("wibox")
-local vicious = require("vicious")
-
--- Theme handling library
-local beautiful = require("beautiful")
-
--- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
-
 -- Notifications & Error Handling
-dofile( awful.util.getdir("config") .. "/naughty.lua" )
+require( "notifications" )
 
 -- Main Options
-dofile( awful.util.getdir("config") .. "/options.lua" )
+require( "options" )
 
 -- Menus
-dofile( awful.util.getdir("config") .. "/menus.lua" )
+require( "menus" )
 
 -- Wibox
-dofile( awful.util.getdir("config") .. "/wibox.lua" )
+require( "wiboxes" )
 
 -- Signals
-dofile( awful.util.getdir("config") .. "/signals.lua" )
+require( "signals" )
 
 -- Bindings
-dofile( awful.util.getdir("config") .. "/bindings.lua" )
+require( "bindings" )
 
 -- Rules
-dofile( awful.util.getdir("config") .. "/rules.lua" )
+require( "rules" )
+

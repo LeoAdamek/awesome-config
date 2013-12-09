@@ -1,4 +1,6 @@
 local awful = require("awful")
+local wibox = require("wibox")
+local vicious = require("vicious")
 
 -- {{{ Wibox
 -- Create a textclock widget
