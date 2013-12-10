@@ -35,7 +35,7 @@ battery_widget = lain.widgets.bat(
             bat_now.prc = bat_now.perc .. "%"
          end
 
-         widget:set_text(bat_now.perc)
+         widget:set_text( "PWR: " .. bat_now.perc )
       end
    }
 )
@@ -45,14 +45,14 @@ cpu_widget = lain.widgets.cpu(
    {
       settings = function()
          widget:set_markup(
-            markup("#E33A6E" , cpu_now.usage .. "%" )
+            markup("#E33A6E" , "CPU: " .. cpu_now.usage .. "%" )
          )
       end
    }
 )
 
 -- System Temperature
---[[
+-- This won't work on Virtual Machines!
 temperature_widget = lain.widgets.temp(
    {
       settings = function()
@@ -62,20 +62,19 @@ temperature_widget = lain.widgets.temp(
       end
    }
 )
---]]
 
 -- Network Widgets
--- etwork Tx/Rx
+-- network Tx/Rx
 net_rx_widget = wibox.widget.textbox()
 net_tx_widget = lain.widgets.net(
    {
       settings = function()
          widget:set_markup(
-            markup("#E54C62" , net_now.sent)
+            markup("#E54C62" , "Tx: " .. net_now.sent)
          )
 
          net_rx_widget:set_markup(
-            markup("#87AF5F" , net_now.received)
+            markup("#87AF5F" , "Rx: " .. net_now.received)
          )
       end
    }
@@ -86,7 +85,7 @@ memory_widget = lain.widgets.mem(
    {
       settings = function()
          widget:set_markup(
-             markup("#E0DA37" , mem_now.used .. "M")
+             markup("#E0DA37" , "RAM: " .. mem_now.used .. "M")
           )
        end
     }
@@ -100,6 +99,7 @@ memory_widget = lain.widgets.mem(
     memory_widget,
     cpu_widget,
     battery_widget,
+    temperature_widget,
     clock_widget
  }
 
