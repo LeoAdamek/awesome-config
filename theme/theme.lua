@@ -5,7 +5,7 @@ theme = {}
 
 theme.icon_dir      = awful.util.getdir("config") .. "/icons"
 
-theme.font          = "Terminus 12"
+theme.font          = "Terminus 8"
 
 theme.bg_normal     = "#000000AA"
 theme.bg_focus      = "#33AEBD"
@@ -93,6 +93,13 @@ theme.layout_spiral     = theme.icon_dir .. "/spiral.png"
 theme.layout_dwindle    = theme.icon_dir .. "/dwindle.png"
 
 theme.awesome_icon      = "/usr/share/awesome/icons/awesome16.png"
+
+-- Widget icons
+theme.widget_cpu = theme.icon_dir .. "/processor.png"
+theme.widget_memory = theme.icon_dir .. "/memory.png"
+theme.widget_temperature = theme.icon_dir .. "/thermometer.png"
+theme.widget_network_tx = theme.icon_dir .. "/network_tx.png"
+theme.widget_network_rx = theme.icon_dir .. "/network_rx.png"
 
 -- Define the icon theme for application icons. If not set then the icons 
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
