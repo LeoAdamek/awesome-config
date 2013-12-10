@@ -32,10 +32,10 @@ awful_layouts = {
 
 lain_layouts = {
    lain.layout.uselesstile,
+   lain.layout.centerwork,
    lain.layout.termfair,
    lain.layout.centerfair,
    lain.layout.cascade,
-   lain.layout.centerwork,
    lain.layout.uselessfair,
    lain.layout.uselesspiral
 }
