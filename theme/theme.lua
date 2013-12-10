@@ -98,7 +98,7 @@ theme.awesome_icon      = "/usr/share/awesome/icons/awesome16.png"
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
-theme.useless_gap_width = 5
+theme.useless_gap_width = 20
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
