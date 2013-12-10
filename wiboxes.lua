@@ -19,19 +19,15 @@ spacer = wibox.widget.textbox(" ╱ ")
 
 -- Battery Widget
 -- Only active if we have a battery
-battery_widget = lain.widgets.bat(
-   {
-      settings = function()
-         if bat_now.perc == "N/A" then
-            bat_now.perc = "AC"
-         else
-            bat_now.prc = bat_now.perc .. "%"
-         end
+battery_icon = wibox.widget.imagebox(theme.battery_widget)
+--[[
+battery_widget = wibox.widget.textbox()
+vicious.register(battery_widget,
+                 vicious.widgets.bat( "BAT0" ) ,
+                 "$1 $2 $3"
 
-         widget:set_text( "PWR: " .. bat_now.perc )
-      end
-   }
 )
+--]]
 
 -- CPU Widget
 cpu_icon   = wibox.widget.imagebox(theme.widget_cpu)
@@ -43,36 +39,29 @@ vicious.register(cpu_widget , vicious.widgets.cpu,  "$1%", 1)
 -- This won't work on Virtual Machines!
 --[[
 temperature_icon   = wibox.widget.imagebox(theme.widget_temperature)
-temperature_widget = lain.widgets.temp(
-   {
-      settings = function()
-         widget:set_markup(
-            markup("#F1AF5F" , coretemp_now .. "°C")
-         )
-      end
-   }
-)
+temperature_widget = 
 --]]
 
 -- Network Widgets
 -- network Tx/Rx
 net_rx_icon   = wibox.widget.imagebox(theme.widget_network_rx)
 net_rx_widget = wibox.widget.textbox()
+vicious.register(
+   net_rx_widget ,
+   vicious.widgets.net ,
+   "${enp0s3 down_kb}",
+   1
+)
 
 net_tx_icon   = wibox.widget.imagebox(theme.widget_network_tx)
-net_tx_widget = lain.widgets.net(
-   {
-      settings = function()
-         widget:set_markup(
-            markup("#E54C62" , net_now.sent)
-         )
-
-         net_rx_widget:set_markup(
-            markup("#87AF5F" , net_now.received)
-         )
-      end
-   }
+net_tx_widget = wibox.widget.textbox()
+vicious.register(
+   net_tx_widget ,
+   vicious.widgets.net ,
+   "${enp0s3 up_kb}" ,
+   1
 )
+
 
 -- Memory
 memory_icon   = wibox.widget.imagebox(theme.widget_memory)
@@ -80,9 +69,9 @@ memory_widget = wibox.widget.textbox()
 vicious.register(memory_widget , vicious.widgets.mem , "$1% ($2M/$3M)" , 1)
 
 
- -- Widgets to go on the right (left-to-right)
- -- To be interleaved with the spacer
- right_widgets = {
+-- Widgets to go on the right (left-to-right)
+-- To be interleaved with the spacer
+right_widgets = {
     net_tx_icon,
     net_tx_widget,
 
@@ -103,11 +92,8 @@ vicious.register(memory_widget , vicious.widgets.mem , "$1% ($2M/$3M)" , 1)
 
     spacer,
 
+--    battery_icon,
 --    battery_widget,
-
---    temperature_widget,
-
---    spacer,
 
     clock_widget
  }

@@ -6,7 +6,7 @@ theme = {}
 theme.icon_dir      = awful.util.getdir("config") .. "/icons"
 theme.lain_icon_dir = awful.util.getdir("config") .. "/lain/icons"
 
-theme.font          = "Terminus 8"
+theme.font          = "Terminus 12"
 
 theme.bg_normal     = "#000000AA"
 theme.bg_focus      = "#33AEBD"
@@ -100,6 +100,7 @@ theme.layout_uselesstile = theme.icon_dir .. "/tile.png"
 theme.awesome_icon      = "/usr/share/awesome/icons/awesome16.png"
 
 -- Widget icons
+theme.widget_battery = theme.icon_dir .. "/battery.png"
 theme.widget_cpu = theme.icon_dir .. "/processor.png"
 theme.widget_memory = theme.icon_dir .. "/memory.png"
 theme.widget_temperature = theme.icon_dir .. "/thermometer.png"
