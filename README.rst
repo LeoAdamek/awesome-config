@@ -24,4 +24,28 @@ Features
 + Adjustable Useless Gap
 + Colourful Widgets
 + Simplicity
-+ ♥
++ ♥ + Dedication to Configuration
+
+----------------------
+  Keyboard Bindings
+----------------------
+
++--------------------+--------------------+
+| *Keyboard Binding* |      *Action*      |
++--------------------+--------------------+
+| Mod + Shift + i    | Increase Gap       |
+|                    |                    |
++--------------------+--------------------+
+| Mod + Shift + o    | Decrease Gap       |
++--------------------+--------------------+
+
+--------------
+ Installation 
+--------------
+
+Install is simple!
+
+    rm -rf ~/.config/awesome
+    git clone https://github.com/LeoAdamek/awesome-config ~/.config/awesome
+    cd ~/.config/awesome
+    git submodule init && git submodule update
