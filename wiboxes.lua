@@ -45,9 +45,10 @@ battery_widget = lain.widgets.bat(
 cpu_icon   = wibox.widget.imagebox(theme.widget_cpu)
 cpu_widget = lain.widgets.cpu(
    {
+      timeout = 1,
       settings = function()
          widget:set_markup(
-            markup("#E33A6E" , cpu_now.usage .. "%" )
+            markup("#E33A6E" ,  cpu_now.usage .. "%" )
          )
       end
    }
@@ -90,6 +91,7 @@ net_tx_widget = lain.widgets.net(
 memory_icon   = wibox.widget.imagebox(theme.widget_memory)
 memory_widget = lain.widgets.mem(
    {
+      timeout = 1,
       settings = function()
          widget:set_markup(
             markup("#E0DA37" , mem_now.used .. "M")
