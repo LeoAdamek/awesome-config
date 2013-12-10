@@ -16,22 +16,31 @@ editor_cmd = terminal .. " -e " .. editor
 
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-layouts = {
---    awful.layout.suit.tile,
 
-   lain.layout.uselesstile,
-
---    awful.layout.suit.tile.left,
-   lain.layout.uselesstile.left,
+awful_layouts = {
+    awful.layout.suit.tile,
+    
+    awful.layout.suit.tile.left,
 
     awful.layout.suit.tile.bottom,
---    awful.layout.suit.tile.top,
-   lain.layout.uselesstile.top,
+    awful.layout.suit.tile.top,
+
 
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.floating
 }
 
+lain_layouts = {
+   lain.layout.uselesstile,
+   lain.layout.termfair,
+   lain.layout.centerfair,
+   lain.layout.cascade,
+   lain.layout.centerwork,
+   lain.layout.uselessfair,
+   lain.layout.uselesspiral
+}
+
+layouts = lain_layouts
 options.layouts = layouts
 -- }}}
 
