@@ -6,17 +6,9 @@ local theme = require("beautiful")
 
 -- {{{ Wibox
 -- Create a textclock widget
+
+
 clock_widget = awful.widget.textclock("DATE %Y/%m/%d @ %H:%M:%S", 1)
-
---[[
--- Memory %
-mymemory = wibox.widget.textbox()
-vicious.register(mymemory , vicious.widgets.mem , "RAM $1% ($2MB/$3MB) :: " , 1)
-
-n-- CPU %
-mycpu = wibox.widget.textbox()
-vicious.register(mycpu , vicious.widgets.cpu,  " $1% (CPU) :: ", 1)
---]]
 
 markup = lain.util.markup
 
@@ -43,19 +35,13 @@ battery_widget = lain.widgets.bat(
 
 -- CPU Widget
 cpu_icon   = wibox.widget.imagebox(theme.widget_cpu)
-cpu_widget = lain.widgets.cpu(
-   {
-      timeout = 1,
-      settings = function()
-         widget:set_markup(
-            markup("#E33A6E" ,  cpu_now.usage .. "%" )
-         )
-      end
-   }
-)
+cpu_widget = wibox.widget.textbox()
+vicious.register(cpu_widget , vicious.widgets.cpu,  "$1%", 1)
+
 
 -- System Temperature
 -- This won't work on Virtual Machines!
+--[[
 temperature_icon   = wibox.widget.imagebox(theme.widget_temperature)
 temperature_widget = lain.widgets.temp(
    {
@@ -66,6 +52,7 @@ temperature_widget = lain.widgets.temp(
       end
    }
 )
+--]]
 
 -- Network Widgets
 -- network Tx/Rx
@@ -89,16 +76,9 @@ net_tx_widget = lain.widgets.net(
 
 -- Memory
 memory_icon   = wibox.widget.imagebox(theme.widget_memory)
-memory_widget = lain.widgets.mem(
-   {
-      timeout = 1,
-      settings = function()
-         widget:set_markup(
-            markup("#E0DA37" , mem_now.used .. "M")
-          )
-       end
-    }
- )
+memory_widget = wibox.widget.textbox()
+vicious.register(memory_widget , vicious.widgets.mem , "$1% ($2M/$3M)" , 1)
+
 
  -- Widgets to go on the right (left-to-right)
  -- To be interleaved with the spacer
@@ -125,9 +105,9 @@ memory_widget = lain.widgets.mem(
 
 --    battery_widget,
 
-    temperature_widget,
+--    temperature_widget,
 
-    spacer,
+--    spacer,
 
     clock_widget
  }
