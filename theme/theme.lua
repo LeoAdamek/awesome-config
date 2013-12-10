@@ -4,6 +4,7 @@ local awful = require("awful")
 theme = {}
 
 theme.icon_dir      = awful.util.getdir("config") .. "/icons"
+theme.lain_icon_dir = awful.util.getdir("config") .. "/lain/icons"
 
 theme.font          = "Terminus 8"
 
@@ -91,6 +92,10 @@ theme.layout_tile       = theme.icon_dir .. "/tile.png"
 theme.layout_tiletop    = theme.icon_dir .. "/tiletop.png"
 theme.layout_spiral     = theme.icon_dir .. "/spiral.png"
 theme.layout_dwindle    = theme.icon_dir .. "/dwindle.png"
+
+-- Lain Layout Icons
+theme.layout_centerwork = theme.lain_icon_dir .. "/layout/default/centerworkw.png"
+theme.layout_uselesstile = theme.icon_dir .. "/tile.png"
 
 theme.awesome_icon      = "/usr/share/awesome/icons/awesome16.png"
 
