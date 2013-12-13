@@ -18,16 +18,17 @@ spacer = wibox.widget.textbox(" ╱ ")
 
 
 -- Battery Widget
--- Only active if we have a battery
-battery_icon = wibox.widget.imagebox(theme.battery_widget)
---[[
-battery_widget = wibox.widget.textbox()
-vicious.register(battery_widget,
-                 vicious.widgets.bat( "BAT0" ) ,
-                 "$1 $2 $3"
+-- Only active if we have a batery
 
+battery_icon = wibox.widget.imagebox(theme.widget_battery)
+battery_widget = wibox.widget.textbox()
+
+vicious.register(battery_widget,
+                 vicious.widgets.bat,
+                 "$2% ($3)", 10, "BAT0"
 )
---]]
+
+
 
 -- CPU Widget
 cpu_icon   = wibox.widget.imagebox(theme.widget_cpu)
@@ -49,7 +50,7 @@ net_rx_widget = wibox.widget.textbox()
 vicious.register(
    net_rx_widget ,
    vicious.widgets.net ,
-   "${enp0s3 down_kb}",
+   "${enp3s0 down_kb}",
    1
 )
 
@@ -58,7 +59,7 @@ net_tx_widget = wibox.widget.textbox()
 vicious.register(
    net_tx_widget ,
    vicious.widgets.net ,
-   "${enp0s3 up_kb}" ,
+   "${enp3s0 up_kb}" ,
    1
 )
 
@@ -92,8 +93,10 @@ right_widgets = {
 
     spacer,
 
---    battery_icon,
---    battery_widget,
+    battery_icon,
+    battery_widget,
+
+    spacer,
 
     clock_widget
  }
