@@ -62,7 +62,7 @@ net_rx_widget = wibox.widget.textbox()
 vicious.register(
    net_rx_widget ,
    vicious.widgets.net ,
-   "${enp3s0 down_kb}",
+   "${wlp4s0 down_kb}",
    1
 )
 
@@ -71,7 +71,7 @@ net_tx_widget = wibox.widget.textbox()
 vicious.register(
    net_tx_widget ,
    vicious.widgets.net ,
-   "${enp3s0 up_kb}" ,
+   "${wlp4s0 up_kb}" ,
    1
 )
 
