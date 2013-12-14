@@ -29,6 +29,18 @@ vicious.register(battery_widget,
 )
 
 
+-- Wireless Widget
+-- Only active if we have a wireless interface.
+
+wireless_icon = wibox.widget.imagebox(theme.widget_wireless)
+wireless_widget = wibox.widget.textbox()
+
+vicious.register(
+   wireless_widget,
+   vicious.widgets.wifi,
+   "${ssid} - ${linp}%", 10 , "wlp4s0"
+)
+
 
 -- CPU Widget
 cpu_icon   = wibox.widget.imagebox(theme.widget_cpu)
@@ -81,6 +93,11 @@ right_widgets = {
     net_rx_icon,
     net_rx_widget,
     
+    spacer,
+
+    wireless_icon,
+    wireless_widget,
+
     spacer,
 
     memory_icon,
