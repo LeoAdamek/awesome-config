@@ -12,7 +12,8 @@
 package.loaded.widgets = nil
 
 local widgets = {
-   memory = require("widgets.memory")
+   memory = require("widgets.memory"),
+   wireless = require("widgets.wireless")
 }
 
 
