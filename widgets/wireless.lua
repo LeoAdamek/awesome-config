@@ -30,9 +30,10 @@ vicious.register(
 )
 
 -- Create the tooltip
+--[[ Disabled: It breaks stuff
 tooltip = awful.tooltip({
                            objects        = { widget },
-                           timeout        = 2,
+                           timeout        = 20,
                            timer_function = function()
                               local info  = vicious.widgets.wifi(widget)
                               local title = "Wireless"
@@ -50,6 +51,7 @@ tooltip = awful.tooltip({
                               return text
                            end
 })
+--]]
 
 widget:add(icon)
 widget:add(text)

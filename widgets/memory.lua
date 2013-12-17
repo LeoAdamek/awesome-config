@@ -38,9 +38,10 @@ vicious.register(
 )
 
 -- Initialize the tooltip
+--[[ Or not... as it will cause the session to freeze after a while.
 tooltip = awful.tooltip({
                            objects = { widget },
-                           timeout = 2,
+                           timeout = 20,
                            timer_function = function()
                               local info  = vicious.widgets.mem(widget)
                               local title = "Memory"
@@ -58,6 +59,7 @@ tooltip = awful.tooltip({
                               return text
                            end
 })
+--]]
 
 widget:add(icon)
 widget:add(text)
