@@ -4,10 +4,9 @@ local vicious = require("vicious")
 local lain = require("lain")
 local theme = require("beautiful")
 
--- {{{ Wibox
+local widgets = require("widgets")
+
 -- Create a textclock widget
-
-
 clock_widget = awful.widget.textclock("DATE %Y/%m/%d @ %H:%M:%S", 1)
 
 markup = lain.util.markup
@@ -69,18 +68,11 @@ vicious.register(
 net_tx_icon   = wibox.widget.imagebox(theme.widget_network_tx)
 net_tx_widget = wibox.widget.textbox()
 vicious.register(
-   net_tx_widget ,
+   net_tx_widget ,mem
    vicious.widgets.net ,
    "${wlp4s0 up_kb}" ,
    1
 )
-
-
--- Memory
-memory_icon   = wibox.widget.imagebox(theme.widget_memory)
-memory_widget = wibox.widget.textbox()
-vicious.register(memory_widget , vicious.widgets.mem , "$1% ($2M/$3M)" , 1)
-
 
 -- Widgets to go on the right (left-to-right)
 -- To be interleaved with the spacer
@@ -100,8 +92,7 @@ right_widgets = {
 
     spacer,
 
-    memory_icon,
-    memory_widget,
+    widgets.memory.widget
 
     spacer,
 
