@@ -27,20 +27,6 @@ vicious.register(battery_widget,
                  "$2% ($3)", 10, "BAT0"
 )
 
-
--- Wireless Widget
--- Only active if we have a wireless interface.
-
-wireless_icon = wibox.widget.imagebox(theme.widget_wireless)
-wireless_widget = wibox.widget.textbox()
-
-vicious.register(
-   wireless_widget,
-   vicious.widgets.wifi,
-   "${ssid} - ${linp}%", 10 , "wlp4s0"
-)
-
-
 -- CPU Widget
 cpu_icon   = wibox.widget.imagebox(theme.widget_cpu)
 cpu_widget = wibox.widget.textbox()
@@ -68,14 +54,14 @@ vicious.register(
 net_tx_icon   = wibox.widget.imagebox(theme.widget_network_tx)
 net_tx_widget = wibox.widget.textbox()
 vicious.register(
-   net_tx_widget ,mem
-   vicious.widgets.net ,
+   net_tx_widget,
+   vicious.widgets.net,
    "${wlp4s0 up_kb}" ,
    1
 )
 
 -- Widgets to go on the right (left-to-right)
--- To be interleaved with the spacer
+-- To be interleaved with the spacer (as shown)
 right_widgets = {
     net_tx_icon,
     net_tx_widget,
@@ -87,12 +73,11 @@ right_widgets = {
     
     spacer,
 
-    wireless_icon,
-    wireless_widget,
+    widgets.wireless.widget,
 
     spacer,
 
-    widgets.memory.widget
+    widgets.memory.widget,
 
     spacer,
 
