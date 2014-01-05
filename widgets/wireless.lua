@@ -30,20 +30,20 @@ vicious.register(
 )
 
 -- Create the tooltip
---[[ Disabled: It breaks stuff
+--[[
 tooltip = awful.tooltip({
                            objects        = { widget },
                            timeout        = 20,
                            timer_function = function()
-                              local info  = vicious.widgets.wifi(widget)
+                              local info  = vicious.widgets.wifi(widget, "wlp4s0")
                               local title = "Wireless"
                               local text  = ''
 
                                  text = '<span font-weight="bold">' .. title .. '\n'
                                  .. string.rep('-' , string.len(title)) .. '</span>' .. '\n'
                                  .. '<span>' .. '\n'
-                                 .. '* Connected To: ' .. '\n'
-                                 .. '* Link Quality: ' .. '\n'
+                                 .. '* Connected To: ' .. info['ssi.. '\n'
+                                 .. '* Link Quality: ' .. '' ..'\n'
                                  .. '</span>' .. '\n'
 
                                  

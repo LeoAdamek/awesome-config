@@ -19,6 +19,7 @@ spacer = wibox.widget.textbox(" ╱ ")
 -- Battery Widget
 -- Only active if we have a batery
 
+--[[
 battery_icon = wibox.widget.imagebox(theme.widget_battery)
 battery_widget = wibox.widget.textbox()
 
@@ -26,6 +27,7 @@ vicious.register(battery_widget,
                  vicious.widgets.bat,
                  "$2% ($3)", 10, "BAT0"
 )
+--]]
 
 -- CPU Widget
 cpu_icon   = wibox.widget.imagebox(theme.widget_cpu)
@@ -86,8 +88,7 @@ right_widgets = {
 
     spacer,
 
-    battery_icon,
-    battery_widget,
+    widgets.battery.widget,
 
     spacer,
 
