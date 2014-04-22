@@ -44,13 +44,11 @@ layouts = lain_layouts
 options.layouts = layouts
 -- }}}
 
--- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-    end
-end
+
 -- }}}
+
+-- {{{ Wallpaper
+awful.util.spawn(theme.wallpaper_cmd)
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
