@@ -80,7 +80,7 @@ theme.titlebar_maximized_button_focus_active    = theme.icon_dir .. "/titlebar/m
 theme.wallpaper = "~/.wallpaper"
 
 -- wallpaper CMD
-wallpaper_cmd = "feh --bg-center " .. theme.wallpaper
+theme.wallpaper_cmd = "feh --bg-center " .. theme.wallpaper
 
 -- You can use your own layout icons like this:
 theme.layout_fairh      = theme.icon_dir .. "/fairh.png"
