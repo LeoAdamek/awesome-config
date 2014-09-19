@@ -7,7 +7,7 @@ options = {}
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("~/.config/awesome/theme/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -57,8 +57,7 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
-    -- Trigrams
-    tags[s] = awful.tag( {"☰" , "☱", "☲" , "☳" , "☴"}, s , layouts[1])
+    tags[s] = awful.tag( {"ア" , "ヱ", "ス" , "メ" , "⛩"}, s , layouts[1])
 end
 -- }}}
 

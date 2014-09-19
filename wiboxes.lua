@@ -7,13 +7,13 @@ local theme = require("beautiful")
 local widgets = require("widgets")
 
 -- Create a textclock widget
-clock_widget = awful.widget.textclock("DATE %Y/%m/%d @ %H:%M:%S", 1)
+clock_widget = awful.widget.textclock("DATE: %Y/%m/%d @ %H:%M:%S",1)
 
 markup = lain.util.markup
 
 -- Spacer Widget
 -- Something to go between widgets
-spacer = wibox.widget.textbox(" ╱ ")
+spacer = wibox.widget.textbox("  ")
 
 
 -- Battery Widget
@@ -49,7 +49,7 @@ net_rx_widget = wibox.widget.textbox()
 vicious.register(
    net_rx_widget ,
    vicious.widgets.net ,
-   "${wlp4s0 down_kb}",
+   "${enp3s0 down_kb}",
    1
 )
 
@@ -58,7 +58,7 @@ net_tx_widget = wibox.widget.textbox()
 vicious.register(
    net_tx_widget,
    vicious.widgets.net,
-   "${wlp4s0 up_kb}" ,
+   "${enp3s0 up_kb}" ,
    1
 )
 

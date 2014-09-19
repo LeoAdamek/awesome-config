@@ -6,9 +6,9 @@ theme = {}
 theme.icon_dir      = awful.util.getdir("config") .. "/icons"
 theme.lain_icon_dir = awful.util.getdir("config") .. "/lain/icons"
 
-theme.font          = "Terminus 12"
+theme.font          = "Terminus 10"
 
-theme.bg_normal     = "#000000AA"
+theme.bg_normal     = "#222222"
 theme.bg_focus      = "#33AEBD"
 theme.bg_urgent     = "#C30171"
 theme.bg_minimize   = "#00000022"
@@ -103,12 +103,12 @@ theme.layout_uselesstile = theme.icon_dir .. "/tile.png"
 theme.awesome_icon      = "/usr/share/awesome/icons/awesome16.png"
 
 -- Widget icons
-theme.widget_battery = theme.icon_dir .. "/battery.png"
-theme.widget_cpu = theme.icon_dir .. "/processor.png"
-theme.widget_memory = theme.icon_dir .. "/memory.png"
+theme.widget_battery     = theme.icon_dir .. "/battery.png"
+theme.widget_cpu         = theme.icon_dir .. "/processor.png"
+theme.widget_memory      = theme.icon_dir .. "/memory.png"
 theme.widget_temperature = theme.icon_dir .. "/thermometer.png"
-theme.widget_network_tx = theme.icon_dir .. "/network_tx.png"
-theme.widget_network_rx = theme.icon_dir .. "/network_rx.png"
+theme.widget_network_tx  = theme.icon_dir .. "/network_tx.png"
+theme.widget_network_rx  = theme.icon_dir .. "/network_rx.png"
 
 -- Define the icon theme for application icons. If not set then the icons 
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
