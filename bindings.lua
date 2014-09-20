@@ -8,21 +8,19 @@ local lain = require("lain")
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-
 modkey = "Mod4" 
 
 -- Global Keys
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
 
+   -- Adjust the gap between windows
    awful.key({modkey , "Shift" } , "i" , function() lain.util.useless_gaps_resize(1) end),
    awful.key({modkey , "Shift" } , "o" , function() lain.util.useless_gaps_resize(-1) end),
 
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+   awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-    awful.key({ modkey,           }, "j",
+   awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
@@ -89,7 +87,7 @@ clientkeys = awful.util.table.join(
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end),
-    awful.key({ modkey,           }, "m",
+    awful.key({ modkey, "Shift"   }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical

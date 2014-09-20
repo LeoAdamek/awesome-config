@@ -13,12 +13,12 @@ myawesomemenu = {
 
 -- Menu
 mymainmenu = awful.menu({
-                           items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                     { "open terminal", terminal },
-                                     { "emacs client" , "emacsclient -nc" },
-                                     { "file browser" , "thunar" },
-                                     { "htop"         , terminal .. " -e htop" }
-                           }
+      items = { { "awesome", myawesomemenu },
+         { "open terminal", terminal },
+         { "emacs client" , "emacsclient -nc" },
+         { "file browser" , "thunar" },
+         { "htop"         , terminal .. " -e htop" }
+      }
 })
 
 -- Menubar configuration
