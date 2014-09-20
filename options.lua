@@ -57,7 +57,12 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
-    tags[s] = awful.tag( {"ア" , "ヱ", "ス" , "メ" , "⛩"}, s , layouts[1])
+
+   -- Katakana "A We So Me"
+   -- tags[s] = awful.tag( {"ア" , "ヱ", "ス" , "メ" , "⛩"}, s , layouts[1])
+
+   -- Greek Lettering
+   tags[s] = awful.tag( {"α", "β" , "γ" , "δ" , "ε"} , s , layouts[1])
 end
 -- }}}
 

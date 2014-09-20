@@ -45,6 +45,7 @@ Features
 
 Install is simple!
 
+.. code:: shell
     rm -rf ~/.config/awesome
     git clone https://github.com/LeoAdamek/awesome-config ~/.config/awesome
     cd ~/.config/awesome

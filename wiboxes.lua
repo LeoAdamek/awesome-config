@@ -13,7 +13,7 @@ markup = lain.util.markup
 
 -- Spacer Widget
 -- Something to go between widgets
-spacer = wibox.widget.textbox("  ")
+spacer = wibox.widget.textbox(" ")
 
 
 -- Battery Widget
