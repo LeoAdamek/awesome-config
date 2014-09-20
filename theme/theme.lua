@@ -6,7 +6,7 @@ theme = {}
 theme.icon_dir      = awful.util.getdir("config") .. "/icons"
 theme.lain_icon_dir = awful.util.getdir("config") .. "/lain/icons"
 
-theme.font          = "Terminus 10"
+theme.font          = "Terminus 8"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#33AEBD"
@@ -23,6 +23,13 @@ theme.border_width  = 2
 theme.border_normal = "#36AEBC"
 theme.border_focus  = "#FD3D30"
 theme.border_marked = "#FFAAAA"
+
+-- Set titlebar colours to match border colours
+-- I think it looks cool
+theme.titlebar_bg_normal = theme.border_normal
+theme.titlebar_bg_focus  = theme.border_focus
+
+theme.taglist_bg_urgent  = theme.border_focus
 
 -- There are other variable sets
 -- overriding the default one when
@@ -51,10 +58,11 @@ theme.menu_width  = 128
 --theme.bg_widget = "#cc0000"
 
 -- Define the image to load
+--[[
 theme.titlebar_close_button_normal              = theme.icon_dir .. "/titlebar/close_normal.png"
 theme.titlebar_close_button_focus               = theme.icon_dir .. "/titlebar/close_focus.png"
 
---[[
+
 theme.titlebar_ontop_button_normal_inactive     = theme.icon_dir .. "/titlebar/ontop_normal_inactive.png"
 theme.titlebar_ontop_button_focus_inactive      = theme.icon_dir .. "/titlebar/ontop_focus_inactive.png"
 theme.titlebar_ontop_button_normal_active       = theme.icon_dir .. "/titlebar/ontop_normal_active.png"
@@ -103,12 +111,14 @@ theme.layout_uselesstile = theme.icon_dir .. "/tile.png"
 theme.awesome_icon      = "/usr/share/awesome/icons/awesome16.png"
 
 -- Widget icons
-theme.widget_battery     = theme.icon_dir .. "/battery.png"
-theme.widget_cpu         = theme.icon_dir .. "/processor.png"
-theme.widget_memory      = theme.icon_dir .. "/memory.png"
+theme.widget_battery     = theme.icon_dir .. "/battery.svg"
+theme.widget_cpu         = theme.icon_dir .. "/bar-graph-2.svg"
+theme.widget_memory      = theme.icon_dir .. "/server.svg"
 theme.widget_temperature = theme.icon_dir .. "/thermometer.png"
-theme.widget_network_tx  = theme.icon_dir .. "/network_tx.png"
-theme.widget_network_rx  = theme.icon_dir .. "/network_rx.png"
+theme.widget_network_tx  = theme.icon_dir .. "/upload.svg"
+theme.widget_network_rx  = theme.icon_dir .. "/download.svg"
+theme.widget_clock       = theme.icon_dir .. "/clock.svg"
+theme.widget_wireless    = theme.icon_dir .. "/signal.svg"
 
 -- Define the icon theme for application icons. If not set then the icons 
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

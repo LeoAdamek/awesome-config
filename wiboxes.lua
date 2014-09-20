@@ -7,18 +7,18 @@ local theme = require("beautiful")
 local widgets = require("widgets")
 
 -- Create a textclock widget
-clock_widget = awful.widget.textclock("DATE: %Y/%m/%d @ %H:%M:%S",1)
+clock_icon   = wibox.widget.imagebox(theme.widget_clock)
+clock_widget = awful.widget.textclock("%Y/%m/%d @ %H:%M:%S",1)
 
 markup = lain.util.markup
 
 -- Spacer Widget
 -- Something to go between widgets
-spacer = wibox.widget.textbox(" ")
+spacer = wibox.widget.textbox("  ")
 
 
 -- Battery Widget
 -- Only active if we have a batery
-
 --[[
 battery_icon = wibox.widget.imagebox(theme.widget_battery)
 battery_widget = wibox.widget.textbox()
@@ -92,6 +92,7 @@ right_widgets = {
 
     spacer,
 
+    clock_icon,
     clock_widget
  }
 

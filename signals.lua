@@ -1,5 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local wibox = require("wibox")
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -24,9 +25,13 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
+
+    -- Turn this on to enable title bars
+    local titlebars_enabled = true
+
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
-        -- buttons for the titlebar
+
+        -- Buttons for the titlebar
         local buttons = awful.util.table.join(
                 awful.button({ }, 1, function()
                     client.focus = c
@@ -70,6 +75,7 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
+-- Change the border colours when clients are focused or unfocused.
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}

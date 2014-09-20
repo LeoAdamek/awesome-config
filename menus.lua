@@ -18,6 +18,8 @@ mymainmenu = awful.menu({
          { "emacs client" , "emacsclient -nc" },
          { "file browser" , "thunar" },
          { "htop"         , terminal .. " -e htop" }
+
+         -- You could add your own commands here.
       }
 })
 
