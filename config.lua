@@ -1,3 +1,11 @@
+--[[
+
+Proposed key-value table for configuration.
+
+** Not yet implemented. **
+
+--]]
+
 return {
 
    wireless_interface = "wlp4s0",
