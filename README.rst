@@ -22,16 +22,23 @@ Features
 
 + Modular Code
 + Adjustable Useless Gap
-+ Colourful Widgets
++ Co-ordinated colours
++ Simple, useful widgets
 + Simplicity
++ Endless customisation options
 + ♥ + Dedication to Configuration
 
 ----------------------
   Keyboard Bindings
 ----------------------
 
+The mod key defaults to ``super``
+
 +--------------------+--------------------+
 | *Keyboard Binding* |      *Action*      |
++--------------------+--------------------+
+| Mod + m            | Open menu          |
+|                    |                    |
 +--------------------+--------------------+
 | Mod + Shift + i    | Increase Gap       |
 |                    |                    |
