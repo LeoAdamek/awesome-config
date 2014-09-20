@@ -69,7 +69,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
     -- Run a Thunar (file browser from xfce)
-    awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end)
+    awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end),
+
+    -- Open the menu with MOD+M
+    awful.key({ modkey },            "m",     function () mymainmenu:toggle() end)
 )
 
 -- Client Keys

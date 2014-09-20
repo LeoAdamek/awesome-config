@@ -10,9 +10,14 @@ myawesomemenu = {
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
+
+-- Menu
 mymainmenu = awful.menu({
                            items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                     { "open terminal", terminal }
+                                     { "open terminal", terminal },
+                                     { "emacs client" , "emacsclient -nc" },
+                                     { "file browser" , "thunar" },
+                                     { "htop"         , terminal .. " -e htop" }
                            }
 })
 

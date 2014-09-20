@@ -42,8 +42,8 @@ theme.taglist_squares_unsel = theme.icon_dir .. "/square_b.png"
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = theme.icon_dir .. "/submenu.png"
-theme.menu_height = 15
-theme.menu_width  = 100
+theme.menu_height = 16
+theme.menu_width  = 128
 
 -- You can add as many variables as
 -- you wish and access them by using
