@@ -44,7 +44,6 @@ client.connect_signal("manage", function (c, startup)
                     awful.mouse.client.resize(c)
                 end)
                 )
-
         -- Widgets that are aligned to the left
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(awful.titlebar.widget.iconwidget(c))
