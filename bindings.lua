@@ -70,7 +70,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end),
 
     -- Open the menu with MOD+M
-    awful.key({ modkey },            "m",     function () mymainmenu:toggle() end)
+    awful.key({ modkey },            "m",     function () mymainmenu:toggle() end),
+
+    -- Toggle titlebars with MOD+T
+    awful.key({ modkey },            "t",     function () for c in awful.client.iterate(function() return true end) do
+             awful.titlebar.toggle(c, "top")
+             end
+    end)
 )
 
 -- Client Keys
