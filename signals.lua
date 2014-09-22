@@ -1,6 +1,8 @@
-local awful = require("awful")
+local awful     = require("awful")
 local beautiful = require("beautiful")
-local wibox = require("wibox")
+local wibox     = require("wibox")
+local vicious   = require("vicious")
+local widgets   = require("widgets")
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -47,22 +49,18 @@ client.connect_signal("manage", function (c, startup)
         -- Widgets that are aligned to the left
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(awful.titlebar.widget.iconwidget(c))
-        left_layout:buttons(buttons)
+        left_layout:buttons(buttonbs)
 
         -- Widgets that are aligned to the right
         local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
+        local pid_widget  = wibox.widget.textbox("PID: " .. c.pid)
+        right_layout:add(pid_widget)
 
         -- The title goes in the middle
         local middle_layout = wibox.layout.flex.horizontal()
         local title = awful.titlebar.widget.titlewidget(c)
         title:set_align("center")
         middle_layout:add(title)
-        middle_layout:buttons(buttons)
 
         -- Now bring it all together
         local layout = wibox.layout.align.horizontal()
