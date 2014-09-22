@@ -1,3 +1,9 @@
+-- Include the standard library for use with awesome-client
+awful     = require("awful")
+naughty   = require("naughty")
+beautiful = require("beautiful")
+wibox     = require("wibox")
+
 -- Notifications & Error Handling
 require( "notifications" )
 
