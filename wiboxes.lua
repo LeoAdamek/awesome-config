@@ -72,10 +72,6 @@ right_widgets = {
 
     net_rx_icon,
     net_rx_widget,
-    
-    spacer,
-
-    widgets.wireless.widget,
 
     spacer,
 
@@ -85,10 +81,6 @@ right_widgets = {
 
     cpu_icon,
     cpu_widget,
-
-    spacer,
-
-    widgets.battery.widget,
 
     spacer,
 
