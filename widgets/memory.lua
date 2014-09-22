@@ -26,7 +26,7 @@ local icon    = wibox.widget.imagebox(theme.widget_memory)
 local tooltip
 
 -- Maximum Length: 4 (for 100%)
-text.fit = function() return 50, 4 end
+text.fit = function() return 20, 4 end
 
 -- Set the text to ${memory_usage_percent}%
 vicious.register(

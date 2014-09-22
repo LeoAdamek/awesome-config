@@ -53,8 +53,12 @@ client.connect_signal("manage", function (c, startup)
 
         -- Widgets that are aligned to the right
         local right_layout = wibox.layout.fixed.horizontal()
-        local pid_widget  = wibox.widget.textbox("PID: " .. c.pid)
-        right_layout:add(pid_widget)
+        local pmem_widget  = wibox.widget.textbox()
+        vicious.register(pmem_widget, widgets.process_memory, "MEM%: $1%", 1, c.pid)
+        right_layout:add(pmem_widget)
+
+--      local pid_widget  = wibox.widget.textbox("PID: " .. c.pid)
+--      right_layout:add(pid_widget)
 
         -- The title goes in the middle
         local middle_layout = wibox.layout.flex.horizontal()
