@@ -3,6 +3,7 @@ awful     = require("awful")
 naughty   = require("naughty")
 beautiful = require("beautiful")
 wibox     = require("wibox")
+helpers   = require("helpers")
 
 -- Notifications & Error Handling
 require( "notifications" )
