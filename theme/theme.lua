@@ -6,7 +6,7 @@ theme = {}
 theme.icon_dir      = awful.util.getdir("config") .. "/icons"
 theme.lain_icon_dir = awful.util.getdir("config") .. "/lain/icons"
 
-theme.font          = "Terminus 8"
+theme.font          = "Anonymous Pro 12"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#33AEBD"
@@ -19,7 +19,7 @@ theme.fg_focus      = "#f0f0f0"
 theme.fg_urgent     = "#F5643F"
 theme.fg_minimize   = "#ffffff"
 
-theme.border_width  = 2
+theme.border_width  = 0
 theme.border_normal = "#36AEBC"
 theme.border_focus  = "#FD3D30"
 theme.border_marked = "#FFAAAA"
